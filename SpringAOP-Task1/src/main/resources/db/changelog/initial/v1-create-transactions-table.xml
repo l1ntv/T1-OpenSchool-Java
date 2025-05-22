@@ -13,7 +13,9 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="amount" type="DECIMAL(19,2)"/>
+            <column name="amount" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
 
             <column name="transaction_date" type="DATETIME">
                 <constraints nullable="false"/>
