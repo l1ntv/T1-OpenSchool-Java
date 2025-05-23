@@ -18,7 +18,7 @@ public interface TransactionMapper extends Mappable<Transaction, TransactionDTO>
     TransactionDTO toDto(Transaction transaction);
 
     @Override
-    @Mapping(target = "account.client", source = "clientId")
+    @Mapping(target = "account.client.clientId", source = "clientId")
     Transaction toEntity(TransactionDTO transactionDTO);
 
     @Override

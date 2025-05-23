@@ -2,6 +2,9 @@ package ru.t1.lint.springaoptask1.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import ru.t1.lint.springaoptask1.aop.DataSourceErrorLoggable;
+import ru.t1.lint.springaoptask1.model.Account;
 import ru.t1.lint.springaoptask1.model.Transaction;
 import ru.t1.lint.springaoptask1.model.exception.AccountNotFoundException;
 import ru.t1.lint.springaoptask1.model.exception.TransactionNotFoundException;
@@ -21,6 +24,7 @@ public class TransactionServiceImpl implements TransactionService {
     private final AccountRepository accountRepository;
 
     @Override
+    @DataSourceErrorLoggable
     public List<Transaction> getAccountTransactions(UUID clientId) {
         if (!accountRepository.existsByClient_ClientId(clientId)) {
             throw new AccountNotFoundException("Account not found for client ID.");
@@ -29,21 +33,26 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
+    @DataSourceErrorLoggable
     public List<Transaction> getAllTransactions() {
         return transactionRepository.findAll();
     }
 
     @Override
+    @Transactional
+    @DataSourceErrorLoggable
     public Transaction createTransaction(Transaction transaction) {
-        UUID transactionId = transaction.getAccount().getClient().getClientId();
-        if (!accountRepository.existsByClient_ClientId(transactionId)) {
-            throw new AccountNotFoundException("Account not found for client ID.");
-        }
+        UUID clientId = transaction.getAccount().getClient().getClientId();
+        Account account = accountRepository.findByClient_ClientId(clientId)
+                .orElseThrow(() -> new AccountNotFoundException("Account not found for client ID."));
+        transaction.setAccount(account);
         transaction.setTransactionDate(new Date());
         return transactionRepository.save(transaction);
     }
 
     @Override
+    @Transactional
+    @DataSourceErrorLoggable
     public void deleteTransaction(Long transactionId) {
         if (!transactionRepository.existsById(transactionId)) {
             throw new TransactionNotFoundException("Transaction not found.");
@@ -52,11 +61,11 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
+    @Transactional
+    @DataSourceErrorLoggable
     public Transaction updateAmount(Double amount, Long id) {
-        if (!transactionRepository.existsById(id)) {
-            throw new TransactionNotFoundException("Transaction not found.");
-        }
-        Transaction transaction = transactionRepository.findById(id).get();
+        Transaction transaction = transactionRepository.findById(id)
+                .orElseThrow(() -> new TransactionNotFoundException("Transaction not found."));
         transaction.setAmount(amount);
         return transactionRepository.save(transaction);
     }

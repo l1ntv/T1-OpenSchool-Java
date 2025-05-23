@@ -7,6 +7,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 import ru.t1.lint.springaoptask1.model.DataSourceErrorLog;
 import ru.t1.lint.springaoptask1.repository.DataSourceErrorLogRepository;
 
@@ -14,6 +15,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 
 @Aspect
+@Component
 @RequiredArgsConstructor
 public class LogDataSourceError {
 
@@ -21,15 +23,15 @@ public class LogDataSourceError {
 
     private static final Logger logger = LoggerFactory.getLogger(LogDataSourceError.class);
 
-    @Pointcut("@annotation(ru.t1.lint.springaoptask1.aop.Loggable)")
+    @Pointcut("@annotation(ru.t1.lint.springaoptask1.aop.DataSourceErrorLoggable)")
     public void loggableMethod() {
+
     }
 
-    // Ловим исключения, которые вылетают из таких методов
-    @AfterThrowing(pointcut = "loggableMethod()", throwing = "ex")
-    public void logAfterException(JoinPoint joinPoint, Exception ex) {
-        String message = ex.getMessage();
-        String stackTrace = convertStackTraceToString(ex);
+    @AfterThrowing(pointcut = "loggableMethod()", throwing = "exception")
+    public void logAfterException(JoinPoint joinPoint, Exception exception) {
+        String message = exception.getMessage();
+        String stackTrace = convertStackTraceToString(exception);
         String methodSignature = joinPoint.getSignature().toShortString();
 
         logger.error("Exception in method: {} | Message: {}", methodSignature, message);

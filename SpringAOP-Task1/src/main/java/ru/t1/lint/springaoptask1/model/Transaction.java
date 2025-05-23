@@ -21,5 +21,6 @@ public class Transaction extends AbstractEntity {
     private Date transactionDate;
 
     @ManyToOne
+    @JoinColumn(name = "client_id", referencedColumnName = "client_id")
     private Account account;
 }

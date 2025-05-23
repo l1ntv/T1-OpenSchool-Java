@@ -19,6 +19,7 @@ public class Account extends AbstractEntity {
     @Column(name = "balance", nullable = false)
     private Double balance;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "client_id", referencedColumnName = "clientId")
     private Client client;
 }
