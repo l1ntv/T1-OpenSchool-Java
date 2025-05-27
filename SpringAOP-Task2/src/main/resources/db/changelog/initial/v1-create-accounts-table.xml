@@ -1,0 +1,37 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="v1-create-accounts-table" author="Vadim Lint">
+        <createTable tableName="accounts">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_accounts"/>
+            </column>
+
+            <column name="client_id" type="UUID">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="account_type" type="VARCHAR(255)"/>
+
+            <column name="balance" type="DECIMAL(19,2)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="created_at" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated_at" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="accounts"
+                                 baseColumnNames="client_id"
+                                 constraintName="fk_accounts_on_clients"
+                                 referencedTableName="clients"
+                                 referencedColumnNames="client_id"/>
+    </changeSet>
+</databaseChangeLog>
