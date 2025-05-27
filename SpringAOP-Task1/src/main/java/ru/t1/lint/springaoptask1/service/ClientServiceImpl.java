@@ -28,11 +28,13 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
+    @Transactional
     public Client createClient(Client client) {
         return clientRepository.save(client);
     }
 
     @Override
+    @Transactional
     public Client updateClient(UUID id, Client client) {
         Client existingClient = clientRepository.findByClientId(id)
                 .orElseThrow(() -> new ClientNotFoundException("Client not found."));
