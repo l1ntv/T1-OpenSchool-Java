@@ -20,14 +20,14 @@ public class RestExceptionHandler {
     }
 
     @ExceptionHandler(TransactionNotFoundException.class)
-    public ResponseEntity<ExceptionBody> transactionNotFound(Exception e) {
+    public ResponseEntity<ExceptionBody> transactionNotFound(TransactionNotFoundException e) {
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
                 .body(new ExceptionBody(e.getMessage()));
     }
 
     @ExceptionHandler(ClientNotFoundException.class)
-    public ResponseEntity<ExceptionBody> clientNotFound(ResourceConflictException e) {
+    public ResponseEntity<ExceptionBody> clientNotFound(ClientNotFoundException e) {
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
                 .body(new ExceptionBody(e.getMessage()));

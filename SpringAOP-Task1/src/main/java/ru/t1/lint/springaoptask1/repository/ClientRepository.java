@@ -11,4 +11,8 @@ import java.util.UUID;
 public interface ClientRepository extends JpaRepository<Client, Long> {
 
     Optional<Client> findByClientId(UUID clientId);
+
+    boolean existsByClientId(UUID clientId);
+
+    void deleteByClientId(UUID clientId);
 }
