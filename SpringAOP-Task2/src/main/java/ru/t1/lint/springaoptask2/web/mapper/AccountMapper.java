@@ -1,10 +1,10 @@
-package ru.t1.lint.springaoptask1.web.mapper;
+package ru.t1.lint.springaoptask2.web.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import ru.t1.lint.springaoptask1.model.Account;
-import ru.t1.lint.springaoptask1.model.Client;
-import ru.t1.lint.springaoptask1.web.dto.AccountDTO;
+import ru.t1.lint.springaoptask2.model.Account;
+import ru.t1.lint.springaoptask2.model.Client;
+import ru.t1.lint.springaoptask2.web.dto.AccountDTO;
 
 import java.util.List;
 import java.util.UUID;

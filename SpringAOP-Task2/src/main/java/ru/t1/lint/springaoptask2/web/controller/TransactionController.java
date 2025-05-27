@@ -1,15 +1,15 @@
-package ru.t1.lint.springaoptask1.web.controller;
+package ru.t1.lint.springaoptask2.web.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.t1.lint.springaoptask1.model.Transaction;
-import ru.t1.lint.springaoptask1.service.TransactionService;
-import ru.t1.lint.springaoptask1.web.dto.TransactionDTO;
-import ru.t1.lint.springaoptask1.web.dto.UpdatedAmountDTO;
-import ru.t1.lint.springaoptask1.web.mapper.TransactionMapper;
+import ru.t1.lint.springaoptask2.model.Transaction;
+import ru.t1.lint.springaoptask2.service.TransactionService;
+import ru.t1.lint.springaoptask2.web.dto.TransactionDTO;
+import ru.t1.lint.springaoptask2.web.dto.UpdatedAmountDTO;
+import ru.t1.lint.springaoptask2.web.mapper.TransactionMapper;
 
 import java.util.List;
 import java.util.UUID;

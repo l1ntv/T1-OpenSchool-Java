@@ -1,7 +1,7 @@
-package ru.t1.lint.springaoptask1.repository;
+package ru.t1.lint.springaoptask2.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ru.t1.lint.springaoptask1.model.Transaction;
+import ru.t1.lint.springaoptask2.model.Transaction;
 
 import java.util.List;
 import java.util.UUID;

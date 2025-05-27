@@ -1,6 +1,6 @@
-package ru.t1.lint.springaoptask1.service;
+package ru.t1.lint.springaoptask2.service;
 
-import ru.t1.lint.springaoptask1.model.Account;
+import ru.t1.lint.springaoptask2.model.Account;
 
 import java.util.List;
 import java.util.UUID;

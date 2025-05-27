@@ -1,4 +1,4 @@
-package ru.t1.lint.springaoptask1.aop;
+package ru.t1.lint.springaoptask2.aop;
 
 import lombok.RequiredArgsConstructor;
 import org.aspectj.lang.JoinPoint;
@@ -8,8 +8,8 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import ru.t1.lint.springaoptask1.model.DataSourceErrorLog;
-import ru.t1.lint.springaoptask1.repository.DataSourceErrorLogRepository;
+import ru.t1.lint.springaoptask2.model.DataSourceErrorLog;
+import ru.t1.lint.springaoptask2.repository.DataSourceErrorLogRepository;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -23,7 +23,7 @@ public class LogDataSourceError {
 
     private static final Logger logger = LoggerFactory.getLogger(LogDataSourceError.class);
 
-    @Pointcut("@annotation(ru.t1.lint.springaoptask1.aop.DataSourceErrorLoggable)")
+    @Pointcut("@annotation(ru.t1.lint.springaoptask2.aop.DataSourceErrorLoggable)")
     public void loggableMethod() {
 
     }

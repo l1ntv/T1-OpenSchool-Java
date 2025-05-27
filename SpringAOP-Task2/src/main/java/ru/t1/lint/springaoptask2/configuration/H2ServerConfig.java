@@ -1,4 +1,4 @@
-package ru.t1.lint.springaoptask1.configuration;
+package ru.t1.lint.springaoptask2.configuration;
 
 import org.h2.tools.Server;
 import org.springframework.context.annotation.Bean;

@@ -1,3 +1,6 @@
+settings:
+  max_time_method_execution_ms: 30
+
 server:
   port: 8080
 

@@ -1,9 +1,10 @@
-package ru.t1.lint.springaoptask1.model;
+package ru.t1.lint.springaoptask2.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.*;
+import ru.t1.lint.springaoptask2.model.AbstractEntity;
 
 import java.util.UUID;
 

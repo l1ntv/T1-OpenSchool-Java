@@ -12,14 +12,14 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class DataMetricErrorLog extends AbstractEntity {
-
-    @Column(name = "stacktrace_text")
-    private String stacktraceText;
-
-    @Column(name = "message")
-    private String message;
+public class TimeLimitExceedLog extends AbstractEntity {
 
     @Column(name = "method_signature")
     private String methodSignature;
+
+    @Column(name = "execution_time_in_ms")
+    private Long executionTime;
+
+    @Column(name = "max_execution_time_in_ms")
+    private Long maxExecutionTime;
 }

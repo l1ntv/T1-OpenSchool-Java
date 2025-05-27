@@ -1,4 +1,4 @@
-package ru.t1.lint.springaoptask1.model;
+package ru.t1.lint.springaoptask2.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

@@ -1,7 +1,8 @@
-package ru.t1.lint.springaoptask1.model;
+package ru.t1.lint.springaoptask2.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import ru.t1.lint.springaoptask2.model.AbstractEntity;
 
 import java.util.Date;
 

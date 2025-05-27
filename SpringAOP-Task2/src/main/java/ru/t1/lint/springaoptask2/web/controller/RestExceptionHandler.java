@@ -1,4 +1,4 @@
-package ru.t1.lint.springaoptask1.web.controller;
+package ru.t1.lint.springaoptask2.web.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import ru.t1.lint.springaoptask1.model.exception.*;
+import ru.t1.lint.springaoptask2.model.exception.*;
 
 @RestControllerAdvice
 public class RestExceptionHandler {

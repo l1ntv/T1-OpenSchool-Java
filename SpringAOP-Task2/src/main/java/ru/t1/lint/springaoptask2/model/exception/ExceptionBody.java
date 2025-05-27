@@ -1,4 +1,4 @@
-package ru.t1.lint.springaoptask1.model.exception;
+package ru.t1.lint.springaoptask2.model.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,13 +1,13 @@
-package ru.t1.lint.springaoptask1.web.controller;
+package ru.t1.lint.springaoptask2.web.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.t1.lint.springaoptask1.model.Client;
-import ru.t1.lint.springaoptask1.service.ClientService;
-import ru.t1.lint.springaoptask1.web.dto.ClientDTO;
-import ru.t1.lint.springaoptask1.web.mapper.ClientMapper;
+import ru.t1.lint.springaoptask2.model.Client;
+import ru.t1.lint.springaoptask2.service.ClientService;
+import ru.t1.lint.springaoptask2.web.dto.ClientDTO;
+import ru.t1.lint.springaoptask2.web.mapper.ClientMapper;
 
 import java.util.List;
 import java.util.UUID;

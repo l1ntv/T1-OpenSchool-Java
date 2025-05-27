@@ -1,4 +1,4 @@
-package ru.t1.lint.springaoptask1.aop;
+package ru.t1.lint.springaoptask2.aop;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

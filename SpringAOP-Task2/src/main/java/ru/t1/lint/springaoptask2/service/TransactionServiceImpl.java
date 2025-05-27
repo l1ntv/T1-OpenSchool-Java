@@ -1,15 +1,17 @@
-package ru.t1.lint.springaoptask1.service;
+package ru.t1.lint.springaoptask2.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.t1.lint.springaoptask1.aop.DataSourceErrorLoggable;
-import ru.t1.lint.springaoptask1.model.Account;
-import ru.t1.lint.springaoptask1.model.Transaction;
-import ru.t1.lint.springaoptask1.model.exception.AccountNotFoundException;
-import ru.t1.lint.springaoptask1.model.exception.TransactionNotFoundException;
-import ru.t1.lint.springaoptask1.repository.AccountRepository;
-import ru.t1.lint.springaoptask1.repository.TransactionRepository;
+import ru.t1.lint.springaoptask2.aop.DataSourceErrorLoggable;
+import ru.t1.lint.springaoptask2.aop.Metric;
+import ru.t1.lint.springaoptask2.model.Account;
+import ru.t1.lint.springaoptask2.model.Transaction;
+import ru.t1.lint.springaoptask2.model.exception.AccountNotFoundException;
+import ru.t1.lint.springaoptask2.model.exception.TransactionNotFoundException;
+import ru.t1.lint.springaoptask2.repository.AccountRepository;
+import ru.t1.lint.springaoptask2.repository.TransactionRepository;
+import ru.t1.lint.springaoptask2.service.TransactionService;
 
 import java.util.Date;
 import java.util.List;
@@ -24,6 +26,7 @@ public class TransactionServiceImpl implements TransactionService {
     private final AccountRepository accountRepository;
 
     @Override
+    @Metric
     @DataSourceErrorLoggable
     public List<Transaction> getAccountTransactions(UUID clientId) {
         if (!accountRepository.existsByClient_ClientId(clientId)) {
@@ -33,12 +36,14 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
+    @Metric
     @DataSourceErrorLoggable
     public List<Transaction> getAllTransactions() {
         return transactionRepository.findAll();
     }
 
     @Override
+    @Metric
     @Transactional
     @DataSourceErrorLoggable
     public Transaction createTransaction(Transaction transaction) {
@@ -51,6 +56,7 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
+    @Metric
     @Transactional
     @DataSourceErrorLoggable
     public void deleteTransaction(Long transactionId) {
@@ -61,6 +67,7 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
+    @Metric
     @Transactional
     @DataSourceErrorLoggable
     public Transaction updateAmount(Double amount, Long id) {

@@ -1,16 +1,17 @@
-package ru.t1.lint.springaoptask1.service;
+package ru.t1.lint.springaoptask2.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.t1.lint.springaoptask1.aop.DataSourceErrorLoggable;
-import ru.t1.lint.springaoptask1.model.Account;
-import ru.t1.lint.springaoptask1.model.Client;
-import ru.t1.lint.springaoptask1.model.exception.AccountNotFoundException;
-import ru.t1.lint.springaoptask1.model.exception.ClientNotFoundException;
-import ru.t1.lint.springaoptask1.model.exception.ResourceConflictException;
-import ru.t1.lint.springaoptask1.repository.AccountRepository;
-import ru.t1.lint.springaoptask1.repository.ClientRepository;
+import ru.t1.lint.springaoptask2.aop.DataSourceErrorLoggable;
+import ru.t1.lint.springaoptask2.aop.Metric;
+import ru.t1.lint.springaoptask2.model.Account;
+import ru.t1.lint.springaoptask2.model.Client;
+import ru.t1.lint.springaoptask2.model.exception.AccountNotFoundException;
+import ru.t1.lint.springaoptask2.model.exception.ClientNotFoundException;
+import ru.t1.lint.springaoptask2.model.exception.ResourceConflictException;
+import ru.t1.lint.springaoptask2.repository.AccountRepository;
+import ru.t1.lint.springaoptask2.repository.ClientRepository;
 
 import java.util.List;
 import java.util.UUID;
@@ -24,6 +25,7 @@ public class AccountServiceImpl implements AccountService {
     private final ClientRepository clientRepository;
 
     @Override
+    @Metric
     @DataSourceErrorLoggable
     public Account getAccountByClientId(UUID uuid) {
         return accountRepository.findByClient_ClientId(uuid)
@@ -31,12 +33,14 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+    @Metric
     @DataSourceErrorLoggable
     public List<Account> getAllAccounts() {
         return accountRepository.findAll();
     }
 
     @Override
+    @Metric
     @Transactional
     @DataSourceErrorLoggable
     public Account createAccount(Account account) {
@@ -51,6 +55,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+    @Metric
     @Transactional
     @DataSourceErrorLoggable
     public void deleteAccount(UUID id) {
@@ -61,6 +66,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+    @Metric
     @Transactional
     @DataSourceErrorLoggable
     public Account updateBalance(Double balance, UUID id) {

@@ -1,4 +1,4 @@
-package ru.t1.lint.springaoptask1.web.controller;
+package ru.t1.lint.springaoptask2.web.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -6,11 +6,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.t1.lint.springaoptask1.model.Account;
-import ru.t1.lint.springaoptask1.service.AccountService;
-import ru.t1.lint.springaoptask1.web.dto.AccountDTO;
-import ru.t1.lint.springaoptask1.web.dto.UpdatedBalanceDTO;
-import ru.t1.lint.springaoptask1.web.mapper.AccountMapper;
+import ru.t1.lint.springaoptask2.model.Account;
+import ru.t1.lint.springaoptask2.service.AccountService;
+import ru.t1.lint.springaoptask2.web.dto.AccountDTO;
+import ru.t1.lint.springaoptask2.web.dto.UpdatedBalanceDTO;
+import ru.t1.lint.springaoptask2.web.mapper.AccountMapper;
 
 import java.util.List;
 import java.util.UUID;

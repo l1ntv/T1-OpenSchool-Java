@@ -1,4 +1,4 @@
-package ru.t1.lint.springaoptask1.web.mapper;
+package ru.t1.lint.springaoptask2.web.mapper;
 
 import java.util.List;
 

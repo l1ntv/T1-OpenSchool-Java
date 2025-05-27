@@ -1,4 +1,4 @@
-package ru.t1.lint.springaoptask1.web.dto;
+package ru.t1.lint.springaoptask2.web.dto;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
