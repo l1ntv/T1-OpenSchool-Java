@@ -46,7 +46,6 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    @Cached
     @Metric
     @Transactional
     @DataSourceErrorLoggable
@@ -60,7 +59,6 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    @Cached
     @Metric
     @Transactional
     @DataSourceErrorLoggable
@@ -72,7 +70,6 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    @Cached
     @Metric
     @Transactional
     @DataSourceErrorLoggable

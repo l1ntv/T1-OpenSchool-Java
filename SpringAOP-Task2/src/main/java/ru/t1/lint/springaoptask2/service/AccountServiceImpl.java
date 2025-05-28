@@ -43,7 +43,6 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    @Cached
     @Metric
     @Transactional
     @DataSourceErrorLoggable
@@ -59,7 +58,6 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    @Cached
     @Metric
     @Transactional
     @DataSourceErrorLoggable
@@ -71,7 +69,6 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    @Cached
     @Metric
     @Transactional
     @DataSourceErrorLoggable

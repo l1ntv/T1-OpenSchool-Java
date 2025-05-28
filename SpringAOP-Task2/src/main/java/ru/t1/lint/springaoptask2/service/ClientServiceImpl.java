@@ -37,7 +37,6 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    @Cached
     @Metric
     @DataSourceErrorLoggable
     @Transactional
@@ -46,7 +45,6 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    @Cached
     @Metric
     @DataSourceErrorLoggable
     @Transactional
@@ -60,7 +58,6 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    @Cached
     @Metric
     @DataSourceErrorLoggable
     @Transactional
