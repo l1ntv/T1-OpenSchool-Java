@@ -30,18 +30,21 @@ public class MetricAspect {
     @Around("metricMethod()")
     public Object measureExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {
         long start = System.currentTimeMillis();
-        Object result = joinPoint.proceed();
-        String signature = joinPoint.getSignature().toString();
-        long executionTime = System.currentTimeMillis() - start;
+        Object result;
+        try {
+            result = joinPoint.proceed();
+        } finally {
+            String signature = joinPoint.getSignature().toString();
+            long executionTime = System.currentTimeMillis() - start;
 
-        if (executionTime > maxTimeMethodExecution) {
-            TimeLimitExceedLog timeLimitExceedLog = new TimeLimitExceedLog();
-            timeLimitExceedLog.setExecutionTime(executionTime);
-            timeLimitExceedLog.setMethodSignature(signature);
-            timeLimitExceedLog.setMaxExecutionTime(maxTimeMethodExecution);
-            timeLimitExceedLogRepository.save(timeLimitExceedLog);
+            if (executionTime > maxTimeMethodExecution) {
+                TimeLimitExceedLog timeLimitExceedLog = new TimeLimitExceedLog();
+                timeLimitExceedLog.setExecutionTime(executionTime);
+                timeLimitExceedLog.setMethodSignature(signature);
+                timeLimitExceedLog.setMaxExecutionTime(maxTimeMethodExecution);
+                timeLimitExceedLogRepository.save(timeLimitExceedLog);
+            }
         }
-
         return result;
     }
 }
