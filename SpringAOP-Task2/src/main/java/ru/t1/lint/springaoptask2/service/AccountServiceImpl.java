@@ -3,6 +3,7 @@ package ru.t1.lint.springaoptask2.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.t1.lint.springaoptask2.aop.Cached;
 import ru.t1.lint.springaoptask2.aop.DataSourceErrorLoggable;
 import ru.t1.lint.springaoptask2.aop.Metric;
 import ru.t1.lint.springaoptask2.model.Account;
@@ -25,6 +26,7 @@ public class AccountServiceImpl implements AccountService {
     private final ClientRepository clientRepository;
 
     @Override
+    @Cached
     @Metric
     @DataSourceErrorLoggable
     public Account getAccountByClientId(UUID uuid) {
@@ -33,6 +35,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+    @Cached
     @Metric
     @DataSourceErrorLoggable
     public List<Account> getAllAccounts() {
@@ -40,6 +43,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+    @Cached
     @Metric
     @Transactional
     @DataSourceErrorLoggable
@@ -55,6 +59,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+    @Cached
     @Metric
     @Transactional
     @DataSourceErrorLoggable
@@ -66,6 +71,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+    @Cached
     @Metric
     @Transactional
     @DataSourceErrorLoggable

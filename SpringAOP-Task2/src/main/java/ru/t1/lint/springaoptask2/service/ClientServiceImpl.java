@@ -3,6 +3,7 @@ package ru.t1.lint.springaoptask2.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.t1.lint.springaoptask2.aop.Cached;
 import ru.t1.lint.springaoptask2.aop.DataSourceErrorLoggable;
 import ru.t1.lint.springaoptask2.aop.Metric;
 import ru.t1.lint.springaoptask2.model.Client;
@@ -19,6 +20,7 @@ public class ClientServiceImpl implements ClientService {
     private final ClientRepository clientRepository;
 
     @Override
+    @Cached
     @Metric
     @DataSourceErrorLoggable
     public List<Client> getAllClients() {
@@ -26,6 +28,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
+    @Cached
     @Metric
     @DataSourceErrorLoggable
     public Client getClientById(UUID id) {
@@ -34,6 +37,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
+    @Cached
     @Metric
     @DataSourceErrorLoggable
     @Transactional
@@ -42,6 +46,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
+    @Cached
     @Metric
     @DataSourceErrorLoggable
     @Transactional
@@ -55,6 +60,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
+    @Cached
     @Metric
     @DataSourceErrorLoggable
     @Transactional

@@ -1,5 +1,6 @@
 settings:
-  max_time_method_execution_ms: 30
+  max_time_method_execution_in_ms: 30
+  ttl_in_s: 10
 
 server:
   port: 8080

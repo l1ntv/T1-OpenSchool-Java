@@ -7,6 +7,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import ru.t1.lint.springaoptask2.model.DataSourceErrorLog;
 import ru.t1.lint.springaoptask2.repository.DataSourceErrorLogRepository;
@@ -17,6 +18,7 @@ import java.io.StringWriter;
 @Aspect
 @Component
 @RequiredArgsConstructor
+@Order(3)
 public class LogDataSourceError {
 
     private final DataSourceErrorLogRepository repository;
