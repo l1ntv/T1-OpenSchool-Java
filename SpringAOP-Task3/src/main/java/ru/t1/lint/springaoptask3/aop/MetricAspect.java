@@ -53,7 +53,6 @@ public class MetricAspect {
                     kafkaMetricProducer.sendWithHeader(TOPIC, HEADER_KEY, HEADER_VALUE, logEntry);
                 } catch (Exception e) {
                     timeLimitExceedLogRepository.save(logEntry);
-                    throw new Exception();
                 }
             }
         }
