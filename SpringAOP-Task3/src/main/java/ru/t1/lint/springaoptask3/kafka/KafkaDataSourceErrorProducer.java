@@ -52,9 +52,7 @@ public class KafkaDataSourceErrorProducer<T extends DataSourceErrorLog> {
                 message,
                 new RecordHeaders().add(new RecordHeader(headerKey, headerValue.getBytes(StandardCharsets.UTF_8)))
         );
-        // Здесь .get() блокирует и если есть ошибка — кидает ExecutionException (с причиной)
         kafkaTemplate.send(record).get();
         kafkaTemplate.flush();
     }
-
 }

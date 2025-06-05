@@ -11,9 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import ru.t1.lint.springaoptask3.kafka.KafkaDataSourceErrorProducer;
-import ru.t1.lint.springaoptask3.kafka.KafkaMetricProducer;
 import ru.t1.lint.springaoptask3.model.DataSourceErrorLog;
-import ru.t1.lint.springaoptask3.model.TimeLimitExceedLog;
 import ru.t1.lint.springaoptask3.repository.DataSourceErrorLogRepository;
 
 import java.io.PrintWriter;
@@ -29,11 +27,14 @@ public class LogDataSourceError {
 
     private final KafkaDataSourceErrorProducer<DataSourceErrorLog> kafkaDataSourceErrorProducer;
 
-    private static final String TOPIC = "t1_demo_metrics";
+    @Value("${settings.log_data_source_error_topic}")
+    private String TOPIC;
 
-    private static final String HEADER_KEY = "error_type";
+    @Value("${settings.log_data_source_error_header_key}")
+    private String HEADER_KEY = "error_type";
 
-    private static final String HEADER_VALUE = "DATA_SOURCE";
+    @Value("${settings.log_data_source_error_header_value}")
+    private String HEADER_VALUE = "DATA_SOURCE";
 
     private static final Logger logger = LoggerFactory.getLogger(LogDataSourceError.class);
 

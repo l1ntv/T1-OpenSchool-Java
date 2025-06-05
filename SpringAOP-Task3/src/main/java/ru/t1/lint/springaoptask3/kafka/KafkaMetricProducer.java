@@ -6,10 +6,8 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.header.internals.RecordHeader;
 import org.apache.kafka.common.header.internals.RecordHeaders;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.kafka.support.ProducerListener;
 import org.springframework.stereotype.Component;
 import ru.t1.lint.springaoptask3.model.TimeLimitExceedLog;
-import ru.t1.lint.springaoptask3.repository.TimeLimitExceedLogRepository;
 
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
@@ -22,7 +20,6 @@ import java.util.UUID;
 public class KafkaMetricProducer<T extends TimeLimitExceedLog> {
 
     private final KafkaTemplate<String, T> kafkaTemplate;
-    private final TimeLimitExceedLogRepository timeLimitExceedLogRepository;
 
     public void send(T message) throws Exception {
         try {

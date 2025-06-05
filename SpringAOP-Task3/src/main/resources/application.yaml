@@ -1,6 +1,12 @@
 settings:
   max_time_method_execution_in_ms: 5
   ttl_in_s: 10
+  log_data_source_error_topic: t1_demo_metrics
+  log_data_source_error_header_key: error_type
+  log_data_source_error_header_value: DATA_SOURCE
+  metrics_topic: t1_demo_metrics
+  metrics_header_key: error_type
+  metrics_header_value: METRICS
 
 server:
   port: 8080

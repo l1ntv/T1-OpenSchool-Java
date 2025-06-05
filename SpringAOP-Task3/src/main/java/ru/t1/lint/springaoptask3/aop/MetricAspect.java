@@ -19,15 +19,20 @@ import ru.t1.lint.springaoptask3.repository.TimeLimitExceedLogRepository;
 public class MetricAspect {
 
     private final TimeLimitExceedLogRepository timeLimitExceedLogRepository;
+
     private final KafkaMetricProducer<TimeLimitExceedLog> kafkaMetricProducer;
 
     @Value("${settings.max_time_method_execution_in_ms}")
     private long maxTimeMethodExecution;
 
-    private static final String TOPIC = "t1_demo_metrics";
+    @Value("${settings.metrics_topic}")
+    private String TOPIC;
 
-    private static final String HEADER_KEY = "error_type";
-    private static final String HEADER_VALUE = "METRICS";
+    @Value("${settings.metrics_header_key}")
+    private String HEADER_KEY;
+
+    @Value("${settings.metrics_header_value}")
+    private String HEADER_VALUE;
 
     @Pointcut("@annotation(ru.t1.lint.springaoptask3.aop.Metric)")
     public void metricMethod() {
