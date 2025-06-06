@@ -8,10 +8,13 @@ import ru.t1.lint.springaoptask4.aop.DataSourceErrorLoggable;
 import ru.t1.lint.springaoptask4.aop.Metric;
 import ru.t1.lint.springaoptask4.model.Account;
 import ru.t1.lint.springaoptask4.model.Transaction;
+import ru.t1.lint.springaoptask4.model.enums.AccountStatus;
+import ru.t1.lint.springaoptask4.model.enums.TransactionStatus;
 import ru.t1.lint.springaoptask4.model.exception.AccountNotFoundException;
 import ru.t1.lint.springaoptask4.model.exception.TransactionNotFoundException;
 import ru.t1.lint.springaoptask4.repository.AccountRepository;
 import ru.t1.lint.springaoptask4.repository.TransactionRepository;
+import ru.t1.lint.springaoptask4.web.dto.TransactionAcceptInfoDTO;
 
 import java.util.Date;
 import java.util.List;
@@ -77,5 +80,34 @@ public class TransactionServiceImpl implements TransactionService {
                 .orElseThrow(() -> new TransactionNotFoundException("Transaction not found."));
         transaction.setAmount(amount);
         return transactionRepository.save(transaction);
+    }
+
+    @Override
+    @Metric
+    @Transactional
+    @DataSourceErrorLoggable
+    public TransactionAcceptInfoDTO handleListeningTransaction(Transaction transaction) {
+        Account account = transaction.getAccount();
+        if (account == null) {
+            throw new AccountNotFoundException("Account not found.");
+        }
+
+        AccountStatus accountStatus = account.getAccountStatus();
+        if (accountStatus.equals(AccountStatus.OPEN)) {
+            transaction.setTransactionStatus(TransactionStatus.REQUESTED);
+            transactionRepository.save(transaction);
+            account.setBalance(account.getBalance() + transaction.getAmount());
+            accountRepository.save(account);
+
+            return TransactionAcceptInfoDTO.builder()
+                    .clientId(account.getClient().getClientId())
+                    .accountId(account.getId())
+                    .transactionId(transaction.getId())
+                    .transactionDate(transaction.getTransactionDate())
+                    .transactionAmount(transaction.getAmount())
+                    .accountBalance(account.getBalance())
+                    .build();
+        }
+        return null;
     }
 }
