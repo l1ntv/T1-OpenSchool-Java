@@ -13,7 +13,10 @@ import java.util.UUID;
 @AllArgsConstructor
 public class ClientDTO {
 
-    @NotNull
+    @NotNull(message = "Unique ID cannot be null.")
+    private Long id;
+
+    @NotNull(message = "Client ID cannot be null.")
     private UUID clientId;
 
     @Size(max = 255, message = "Max length of first name is 255.")

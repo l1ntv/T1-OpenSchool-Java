@@ -14,6 +14,9 @@ import java.util.UUID;
 @AllArgsConstructor
 public class TransactionDTO {
 
+    @NotNull(message = "Unique ID cannot be null.")
+    private Long id;
+
     @NotNull(message = "Client ID cannot be null.")
     private UUID clientId;
 

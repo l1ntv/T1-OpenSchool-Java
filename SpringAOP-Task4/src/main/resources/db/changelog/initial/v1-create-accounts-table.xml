@@ -15,6 +15,12 @@
 
             <column name="account_type" type="VARCHAR(255)"/>
 
+            <column name="account_status" type="nvarchar(255)"/>
+
+            <column name="frozen_amount" type="DECIMAL(19,2)">
+                <constraints nullable="true"/>
+            </column>
+
             <column name="balance" type="DECIMAL(19,2)">
                 <constraints nullable="true"/>
             </column>
